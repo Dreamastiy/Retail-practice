@@ -11,7 +11,8 @@
 ########################
 
 ## Sales History
-sales.original <- read.csv('D:\\Магнит\\Test DataSource\\sales.csv', 
+getwd()
+sales.original <- read.csv('data\\sales.csv', 
                            header = T, sep = ';', dec = ',', encoding = 'UTF-8')
 names(sales.original) <- c('date', 'store', 'sku', 'sales')
 sales.original$date <- as.Date(sales.original$date)
