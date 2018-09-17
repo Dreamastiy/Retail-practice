@@ -39,8 +39,8 @@ gg <- ggraphics(cont = plot.group, label='', visible = TRUE)
 #############################
 
 features.grouping <- getFactorVector(sales.datamart)
-feature.values <- unique(sales.datamart$store)#c()
-features.exp <- c()
+feature.exp.values <- unique(sales.datamart$store)#c()
+# features.exp <- c()
 features.exp.values <- c()
 features.aggr <- c()
 features.values.checked <- c()
@@ -54,7 +54,7 @@ exp.items <-  gcombobox(features.grouping,
                              update_exp_values(features.exp.values, features.exp, )
                         })
 
-exp.items.values <-  gcombobox(features.grouping, 
+exp.items.values <-  gcombobox(feature.exp.values, 
                         container = input.exp.value, 
                         handler = function(h,...){
                              features.exp <- svalue(exp.items)
@@ -79,6 +79,7 @@ aggr.hl.items <-  gcombobox(feature.values,
 
 aggr.values.items <-  gcheckboxgroup(feature.values,
                                 container = input.aggr.value,
+                                use.table = T,
                                 handler = function(h,...){
                                      # features.values.checked <- svalue(aggr.values.items)
                                 })
