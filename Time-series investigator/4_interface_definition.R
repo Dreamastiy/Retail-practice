@@ -50,9 +50,30 @@ exp.items <-  gcombobox(features.grouping,
                         container = input.exp.level, 
                         handler = function(h,...){
                              features.exp <- svalue(exp.items)
+                             aggregated_plot(df = sales.datamart, xname = 'date', yname = 'sales', byname = features.aggr)
+                             # aggr.items [<- unique(sales.datamart[[features.exp]])
                              # update_plot_exploration(gg, features.exp, features.aggr, sales.datamart)
-                             update_exp_values(features.exp.values, features.exp, )
+                             # update_exp_values(features.exp.values, features.exp, )
                         })
+
+aggr.items <-  gcombobox(features.grouping, 
+                         container = input.aggr.level, 
+                         handler = function(h,...){
+                              features.aggr <- svalue(aggr.items)
+                              aggregated_plot(df = sales.datamart, xname = 'date', yname = 'sales', byname = features.aggr)
+                              #update_plot_exploration(gg, features.exp, features.aggr, sales.datamart)
+                         })
+
+?gcombobox
+
+aggr.items <- c('1','2')
+
+
+
+###################################
+## TO DEVELOP
+###################################
+
 
 exp.items.values <-  gcombobox(feature.exp.values, 
                         container = input.exp.value, 
@@ -63,12 +84,7 @@ exp.items.values <-  gcombobox(feature.exp.values,
                         })
 
 
-aggr.items <-  gcombobox(features.grouping, 
-                        container = input.aggr.level, 
-                        handler = function(h,...){
-                             features.aggr <- svalue(aggr.items)
-                             update_plot_exploration(gg, features.exp, features.aggr, sales.datamart)
-                        })
+
 
 aggr.hl.items <-  gcombobox(feature.values,
                             container = input.aggr.value.hl,
@@ -117,3 +133,7 @@ items <- gcombobox(unique.stores, container = grp.text.input1 ,
                         # }
                    }
 )
+
+
+ggenericwidget("lm", cont=TRUE)
+
